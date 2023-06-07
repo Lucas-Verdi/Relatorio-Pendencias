@@ -32,6 +32,8 @@ class Th(Thread):
         #Selecionando a planilha
         planilha = pastadetrabalho.sheets["posicoes pendencias vendas comp"]
 
+        sleep(4)
+
         #Deletando colunas desnecessárias
         planilha.range('D:F').delete()
         planilha.range('E:E').delete()
