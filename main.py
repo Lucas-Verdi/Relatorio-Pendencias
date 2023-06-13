@@ -8,6 +8,8 @@ import win32com.client as win32
 from pyautogui import sleep
 import sys
 from threading import Thread
+import openpyxl
+from openpyxl.styles import Border, Side
 
 class Th(Thread):
 
@@ -132,6 +134,51 @@ class Th(Thread):
         pyautogui.hotkey('ctrl', 'x')
         pyautogui.press('left', presses=12)
         pyautogui.hotkey('ctrl', 'v')
+
+        sleep(1)
+
+        #Classificando de A a Z
+        planilha.range('E:E').select()
+        pyautogui.hotkey('alt', 'h', 's')
+        pyautogui.hotkey('a', 'l')
+        pyautogui.press('enter')
+        sleep(1)
+        planilha.range('D:D').select()
+        pyautogui.hotkey('alt', 'h', 's')
+        pyautogui.hotkey('a', 'l')
+        pyautogui.press('enter')
+        sleep(1)
+        planilha.range('C:C').select()
+        pyautogui.hotkey('alt', 'h', 's')
+        pyautogui.hotkey('a', 'l')
+        pyautogui.press('enter')
+
+        #Adicionando subtotal
+        planilha.range('A:L').select()
+        pyautogui.hotkey('alt', 's')
+        pyautogui.press('u')
+        pyautogui.hotkey('alt', 'a')
+        pyautogui.press('down', presses=3)
+        pyautogui.press('enter')
+        pyautogui.press('tab')
+        pyautogui.press('down')
+        pyautogui.press('up')
+        pyautogui.press('enter')
+        pyautogui.press('tab')
+        pyautogui.press('space')
+        pyautogui.press('up', presses=11)
+        pyautogui.press('space')
+        pyautogui.press('enter')
+
+        #Adicionando todas as bordas
+        pyautogui.hotkey('alt', 'c', 'b')
+        pyautogui.press('down', presses=5)
+        pyautogui.press('enter')
+
+        #Ajustando largura das colunas
+        pyautogui.hotkey('alt', 'c')
+        pyautogui.press('o')
+        pyautogui.press('t')
 
 
 def start():
